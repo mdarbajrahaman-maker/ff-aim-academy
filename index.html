@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FF AIM ACADEMY - Official Aim & Sensitivity Portal</title>
+    <style>
+        :root {
+            --primary: #ff5500;
+            --secondary: #dc2626;
+            --bg-dark: #0a0a0c;
+            --card-bg: #141419;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --accent: #00ffcc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a0000 0%, #0a0a0c 100%);
+            border-bottom: 2px solid var(--secondary);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area h1 {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo-area span {
+            font-size: 11px;
+            color: var(--accent);
+            display: block;
+        }
+
+        .fb-btn {
+            background: #1877f2;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, #2b0b0b, #141419);
+            border: 1px solid rgba(255, 85, 0, 0.3);
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.2);
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        /* Card Box */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #22222c;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .card h3 {
+            font-size: 16px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            background: #1e1e24;
+            border: 1px solid #333340;
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Generate Button */
+        .gen-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.2s;
+        }
+
+        .gen-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Result Box */
+        .result-box {
+            display: none;
+            margin-top: 15px;
+            background: #1b1b22;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 14px;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .copy-single-btn {
+            background: #2a2a36;
+            color: var(--accent);
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 12px;
+            border-top: 1px solid #1f1f28;
+            margin-top: 30px;
+        }
+
+        footer span {
+            color: var(--primary);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>FF AIM ACADEMY</h1>
+            <span>Pro Aim & Sensitivity Portal</span>
+        </div>
+        <a href="https://facebook.com" target="_blank" class="fb-btn">🔵 Join Page</a>
+    </header>
+
+    <div class="container">
+        
+        <div class="hero">
+            <h2>🔥 HEADSHOT SENSITIVITY GENERATOR</h2>
+            <p>Apne phone ke model aur RAM ke hisab se exact drag sensitivity aur DPI nikalein!</p>
+        </div>
+
+        <div class="card">
+            <h3>⚙️ Select Your Device</h3>
+            
+            <div class="form-group">
+                <label>Phone Brand / RAM</label>
+                <select id="deviceSelect">
+                    <option value="2gb">Low-End Device (2GB / 3GB RAM)</option>
+                    <option value="4gb" selected>Mid-Range Device (4GB / 6GB RAM)</option>
+                    <option value="8gb">High-End Device (8GB / 12GB RAM)</option>
+                    <option value="iphone">iPhone / iOS Device</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Player Playstyle</label>
+                <select id="playstyle">
+                    <option value="drag">One-Tap / Drag Headshot</option>
+                    <option value="rush">Close Range Rush Player</option>
+                    <option value="balanced">Balanced (All Rounder)</option>
+                </select>
+            </div>
+
+            <button class="gen-btn" onclick="generateSensitivity()">Generate Best Sensitivity</button>
+
+            <div class="result-box" id="resultBox">
+                <h4 style="color:var(--primary); margin-bottom:10px; font-size:15px;">✨ Recommended Settings:</h4>
+                <div class="result-item"><span>General:</span> <b><span id="genVal">98</span></b> <button class="copy-single-btn" onclick="copyText('General')">Copy</button></div>
+                <div class="result-item"><span>Red Dot:</span> <b><span id="redVal">95</span></b> <button class="copy-single-btn" onclick="copyText('Red Dot')">Copy</button></div>
+                <div class="result-item"><span>2x Scope:</span> <b><span id="scope2Val">92</span></b> <button class="copy-single-btn" onclick="copyText('2x Scope')">Copy</button></div>
+                <div class="result-item"><span>4x Scope:</span> <b><span id="scope4Val">90</span></b> <button class="copy-single-btn" onclick="copyText('4x Scope')">Copy</button></div>
+                <div class="result-item"><span>DPI Setting:</span> <b><span id="dpiVal">550</span></b> <button class="copy-single-btn" onclick="copyText('DPI')">Copy</button></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🎯 Custom HUD Claw Layout</h3>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">Fire Button Size: <b>45% to 50%</b></p>
+            <p style="font-size:13px; color:var(--text-muted);">Fire Button Position: <b>Bottom Right Corner (Smooth Drag ke liye)</b></p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 <span>FF AIM ACADEMY</span>. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function generateSensitivity() {
+            const device = document.getElementById('deviceSelect').value;
+            let gen = 95, red = 92, s2 = 88, s4 = 85, dpi = 500;
+
+            if(device === '2gb') {
+                gen = 100; red = 98; s2 = 95; s4 = 92; dpi = 600;
+            } else if(device === '4gb') {
+                gen = 98; red = 95; s2 = 90; s4 = 88; dpi = 550;
+            } else if(device === '8gb') {
+                gen = 92; red = 90; s2 = 85; s4 = 82; dpi = 480;
+            } else if(device === 'iphone') {
+                gen = 90; red = 88; s2 = 82; s4 = 80; dpi = 410; // Default iOS
+            }
+
+            document.getElementById('genVal').innerText = gen;
+            document.getElementById('redVal').innerText = red;
+            document.getElementById('scope2Val').innerText = s2;
+            document.getElementById('scope4Val').innerText = s4;
+            document.getElementById('dpiVal').innerText = dpi;
+
+            document.getElementById('resultBox').style.display = 'block';
+        }
+
+        function copyText(type) {
+            alert(type + " sensitivity copied successfully!");
+        }
+    </script>
+</body>
+</html>
