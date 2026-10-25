@@ -106,7 +106,87 @@
         .card h3 {
             font-size: 15px;
             color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .search-container {
+            position: relative;
             margin-bottom: 15px;
+        }
+
+        .search-box-wrapper {
+            display: flex;
+            align-items: center;
+            background: #1e1e24;
+            border: 1px solid #333340;
+            border-radius: 8px;
+            padding: 0 12px;
+        }
+
+        .search-box-wrapper:focus-within {
+            border-color: var(--primary);
+        }
+
+        .search-icon {
+            font-size: 16px;
+            margin-right: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .suggestions {
+            background: #1e1e24;
+            border: 1px solid #333340;
+            border-radius: 8px;
+            max-height: 180px;
+            overflow-y: auto;
+            margin-top: 5px;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            display: none;
+        }
+
+        .suggestion-item {
+            padding: 10px;
+            font-size: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .suggestion-item:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .trending-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: #1e1e24;
+            border: 1px solid #2a2a36;
+            color: var(--text-muted);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            border-color: var(--primary);
+            color: white;
         }
 
         .form-group {
@@ -181,6 +261,11 @@
             cursor: pointer;
         }
 
+        .copy-single-btn:active {
+            background: var(--accent);
+            color: black;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -210,45 +295,29 @@
         
         <div class="hero">
             <h2>🔥 PRO HEADSHOT SENSITIVITY GENERATOR</h2>
-            <p>Apna exact mobile model select karein aur 100% working pro settings paayein!</p>
+            <p>Search any Indian mobile brand & get 100% working settings!</p>
         </div>
 
         <div class="card">
-            <h3>📱 Select Your Mobile Device & RAM</h3>
+            <h3>📱 Search Your Mobile Device</h3>
             
-            <div class="form-group">
-                <label>All Indian Mobile Brands & Models</label>
-                <select id="deviceSelect">
-                    <optgroup label="--- REALME ---">
-                        <option value="realme_c">Realme C Series (C3, C11, C33, C53, C55 - 3GB/4GB)</option>
-                        <option value="realme_mid">Realme 9 / 10 / 11 / 12 Series (4GB/6GB)</option>
-                        <option value="realme_high">Realme Narzo & GT Series (6GB/8GB/12GB)</option>
-                    </optgroup>
-                    <optgroup label="--- SAMSUNG ---">
-                        <option value="samsung_low">Samsung Galaxy A14 / M13 / F14 (4GB)</option>
-                        <option value="samsung_mid">Samsung Galaxy A34 / M34 / F34 (6GB/8GB)</option>
-                        <option value="samsung_high">Samsung Galaxy A54 / M54 / S Series Ultra</option>
-                    </optgroup>
-                    <optgroup label="--- REDMI & POCO ---">
-                        <option value="redmi_budget">Redmi 10 / 12 / A2 / A3 (Low-End 3GB/4GB)</option>
-                        <option value="redmi_note">Redmi Note 10 / 11 / 12 / 13 Pro (6GB/8GB)</option>
-                        <option value="poco_series">Poco M4/M6, X5/X6 Pro, F5/F6 (Gaming Series)</option>
-                    </optgroup>
-                    <optgroup label="--- VIVO & OPPO ---">
-                        <option value="vivo_y">Vivo Y Series & Oppo A Series (Budget)</option>
-                        <option value="vivo_v">Vivo V29 / V30 / T2 / T3 Pro Series</option>
-                        <option value="oppo_reno">Oppo Reno 8 / 9 / 10 / 11 Series</option>
-                    </optgroup>
-                    <optgroup label="--- ONEPLUS ---">
-                        <option value="oneplus_series">OnePlus Nord CE 3/4, 11R, 12R (Smooth 90FPS)</option>
-                    </optgroup>
-                    <optgroup label="--- APPLE iPHONE ---">
-                        <option value="iphone_series">Apple iPhone 11, 12, 13, 14, 15, 16 Series</option>
-                    </optgroup>
-                    <optgroup label="--- OTHERS (Moto, Infinix, Tecno) ---">
-                        <option value="others_budget">Moto G54, Infinix Note, Tecno Pova Series</option>
-                    </optgroup>
-                </select>
+            <div class="search-container">
+                <label>Type Brand or Model Name</label>
+                <div class="search-box-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="deviceInput" placeholder="e.g. Realme C33, Vivo Y20, Samsung M34, iPhone..." onkeyup="filterDevices()">
+                </div>
+                <div class="suggestions" id="suggestionsBox"></div>
+            </div>
+
+            <div class="trending-tags">
+                <span style="font-size:11px; color:var(--text-muted); width:100%; margin-bottom:2px;">Trending Devices:</span>
+                <span class="tag" onclick="selectTag('Realme C33')">Realme C33</span>
+                <span class="tag" onclick="selectTag('Realme Narzo 50')">Narzo 50</span>
+                <span class="tag" onclick="selectTag('Samsung Galaxy M34')">Samsung M34</span>
+                <span class="tag" onclick="selectTag('Poco X5 Pro')">Poco X5 Pro</span>
+                <span class="tag" onclick="selectTag('Vivo Y20')">Vivo Y20</span>
+                <span class="tag" onclick="selectTag('Apple iPhone 13')">iPhone 13</span>
             </div>
 
             <div class="form-group">
@@ -264,13 +333,14 @@
 
             <div class="result-box" id="resultBox">
                 <h4 style="color:var(--primary); margin-bottom:10px; font-size:14px;">✨ Pro In-Game Settings (Max 200):</h4>
-                <div class="result-item"><span>General:</span> <b><span id="genVal">196</span></b> <button class="copy-single-btn" onclick="copyText('General')">Copy</button></div>
-                <div class="result-item"><span>Red Dot:</span> <b><span id="redVal">192</span></b> <button class="copy-single-btn" onclick="copyText('Red Dot')">Copy</button></div>
-                <div class="result-item"><span>2x Scope:</span> <b><span id="scope2Val">188</span></b> <button class="copy-single-btn" onclick="copyText('2x Scope')">Copy</button></div>
-                <div class="result-item"><span>4x Scope:</span> <b><span id="scope4Val">185</span></b> <button class="copy-single-btn" onclick="copyText('4x Scope')">Copy</button></div>
-                <div class="result-item"><span>Sniper Scope:</span> <b><span id="awaVal">72</span></b> <button class="copy-single-btn" onclick="copyText('Sniper Scope')">Copy</button></div>
-                <div class="result-item"><span>Free Look:</span> <b><span id="freeVal">80</span></b> <button class="copy-single-btn" onclick="copyText('Free Look')">Copy</button></div>
-                <div class="result-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top:5px; padding-top:8px;"><span>Recommended DPI:</span> <b style="color:var(--accent);"><span id="dpiVal">580</span></b> <button class="copy-single-btn" onclick="copyText('DPI')">Copy</button></div>
+                <div class="result-item"><span>Selected Device:</span> <b id="selectedDeviceName" style="color:var(--accent);">None</b></div>
+                <div class="result-item"><span>General:</span> <b><span id="genVal">196</span></b> <button class="copy-single-btn" onclick="copyText('General', 'genVal')">Copy</button></div>
+                <div class="result-item"><span>Red Dot:</span> <b><span id="redVal">192</span></b> <button class="copy-single-btn" onclick="copyText('Red Dot', 'redVal')">Copy</button></div>
+                <div class="result-item"><span>2x Scope:</span> <b><span id="scope2Val">188</span></b> <button class="copy-single-btn" onclick="copyText('2x Scope', 'scope2Val')">Copy</button></div>
+                <div class="result-item"><span>4x Scope:</span> <b><span id="scope4Val">185</span></b> <button class="copy-single-btn" onclick="copyText('4x Scope', 'scope4Val')">Copy</button></div>
+                <div class="result-item"><span>Sniper Scope:</span> <b><span id="awaVal">72</span></b> <button class="copy-single-btn" onclick="copyText('Sniper Scope', 'awaVal')">Copy</button></div>
+                <div class="result-item"><span>Free Look:</span> <b><span id="freeVal">80</span></b> <button class="copy-single-btn" onclick="copyText('Free Look', 'freeVal')">Copy</button></div>
+                <div class="result-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top:5px; padding-top:8px;"><span>Recommended DPI:</span> <b style="color:var(--accent);"><span id="dpiVal">410</span></b> <button class="copy-single-btn" onclick="copyText('DPI', 'dpiVal')">Copy</button></div>
             </div>
         </div>
 
@@ -288,18 +358,96 @@
     </footer>
 
     <script>
-        function generateSensitivity() {
-            const device = document.getElementById('deviceSelect').value;
-            let gen = 195, red = 190, s2 = 185, s4 = 180, awa = 70, free = 75, dpi = 560;
+        const devices = [
+            // Realme Models
+            "Realme C1", "Realme C2", "Realme C3", "Realme C11", "Realme C12", "Realme C15", "Realme C20", "Realme C21", "Realme C25", "Realme C30", "Realme C31", "Realme C33", "Realme C35", "Realme C51", "Realme C53", "Realme C55", "Realme C63", "Realme C65",
+            "Realme 3", "Realme 5", "Realme 6", "Realme 7", "Realme 8", "Realme 9", "Realme 10", "Realme 11", "Realme 12", "Realme 13 Pro",
+            "Realme Narzo 10", "Realme Narzo 20", "Realme Narzo 30", "Realme Narzo 50", "Realme Narzo 60", "Realme Narzo 70",
+            "Realme GT", "Realme GT 2", "Realme GT Neo 3", "Realme GT 6",
+            
+            // Vivo Models
+            "Vivo Y11", "Vivo Y12", "Vivo Y15", "Vivo Y17", "Vivo Y20", "Vivo Y21", "Vivo Y22", "Vivo Y28", "Vivo Y33s", "Vivo Y53s", "Vivo Y100", "Vivo Y200",
+            "Vivo V15", "Vivo V17", "Vivo V19", "Vivo V20", "Vivo V21", "Vivo V23", "Vivo V25", "Vivo V27", "Vivo V29", "Vivo V30", "Vivo V40",
+            "Vivo T1", "Vivo T2", "Vivo T3 Pro", "Vivo X90", "Vivo X100",
 
-            if(device.includes('c') || device.includes('budget') || device.includes('low')) {
-                gen = 199; red = 196; s2 = 192; s4 = 188; dpi = 620;
-            } else if(device.includes('iphone')) {
-                gen = 182; red = 178; s2 = 172; s4 = 168; dpi = 410;
-            } else if(device.includes('high') || device.includes('poco') || device.includes('oneplus')) {
-                gen = 194; red = 190; s2 = 184; s4 = 180; dpi = 550;
+            // Samsung Models
+            "Samsung Galaxy A10", "Samsung Galaxy A12", "Samsung Galaxy A14", "Samsung Galaxy A23", "Samsung Galaxy A34", "Samsung Galaxy A54", "Samsung Galaxy A55",
+            "Samsung Galaxy M11", "Samsung Galaxy M13", "Samsung Galaxy M21", "Samsung Galaxy M31", "Samsung Galaxy M34", "Samsung Galaxy M54", "Samsung Galaxy M55",
+            "Samsung Galaxy F14", "Samsung Galaxy F34", "Samsung Galaxy F54",
+            "Samsung Galaxy S21 Ultra", "Samsung Galaxy S22 Ultra", "Samsung Galaxy S23 Ultra", "Samsung Galaxy S24 Ultra",
+
+            // Redmi & Poco Models
+            "Redmi 8", "Redmi 9", "Redmi 9 Activ", "Redmi 10", "Redmi 11 Prime", "Redmi 12", "Redmi 13C", "Redmi A2", "Redmi A3",
+            "Redmi Note 7 Pro", "Redmi Note 8", "Redmi Note 9 Pro", "Redmi Note 10 Pro", "Redmi Note 11 Pro", "Redmi Note 12 Pro", "Redmi Note 13 Pro",
+            "Poco C3", "Poco C51", "Poco C65", "Poco M2 Pro", "Poco M4 Pro", "Poco M6 Pro", "Poco X3 Pro", "Poco X5 Pro", "Poco X6 Pro", "Poco F5", "Poco F6",
+
+            // Oppo Models
+            "Oppo A15", "Oppo A16", "Oppo A17", "Oppo A18", "Oppo A38", "Oppo A58", "Oppo A78", "Oppo F19", "Oppo F21 Pro", "Oppo F23", "Oppo F25 Pro",
+            "Oppo Reno 6", "Oppo Reno 7", "Oppo Reno 8", "Oppo Reno 9", "Oppo Reno 10", "Oppo Reno 11", "Oppo Reno 12",
+
+            // OnePlus Models
+            "OnePlus Nord CE", "OnePlus Nord CE 2", "OnePlus Nord CE 3", "OnePlus Nord CE 4", "OnePlus 9R", "OnePlus 10R", "OnePlus 11R", "OnePlus 12R", "OnePlus 12",
+
+            // Apple iPhone Models
+            "Apple iPhone 11", "Apple iPhone 12", "Apple iPhone 13", "Apple iPhone 14", "Apple iPhone 15", "Apple iPhone 16 Pro Max",
+
+            // Motorola & Others
+            "Moto G24", "Moto G34", "Moto G54", "Moto G84", "Moto Edge 40", "Infinix Note 30", "Infinix Note 40", "Tecno Pova 5", "Tecno Pova 6 Pro"
+        ];
+
+        function filterDevices() {
+            const input = document.getElementById('deviceInput').value.toLowerCase();
+            const box = document.getElementById('suggestionsBox');
+            box.innerHTML = '';
+            
+            if (input.length === 0) {
+                box.style.display = 'none';
+                return;
             }
 
+            const filtered = devices.filter(d => d.toLowerCase().includes(input));
+            
+            if (filtered.length > 0) {
+                box.style.display = 'block';
+                filtered.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'suggestion-item';
+                    div.innerText = item;
+                    div.onclick = function() {
+                        document.getElementById('deviceInput').value = item;
+                        box.style.display = 'none';
+                    };
+                    box.appendChild(div);
+                });
+            } else {
+                box.style.display = 'none';
+            }
+        }
+
+        function selectTag(deviceName) {
+            document.getElementById('deviceInput').value = deviceName;
+            document.getElementById('suggestionsBox').style.display = 'none';
+            generateSensitivity();
+        }
+
+        function generateSensitivity() {
+            const device = document.getElementById('deviceInput').value;
+            if(!device) {
+                alert("Pehle apne mobile ka naam search karein ya select karein!");
+                return;
+            }
+
+            let gen = 196, red = 192, s2 = 188, s4 = 185, awa = 72, free = 80, dpi = 410;
+
+            if(device.toLowerCase().includes('iphone')) {
+                gen = 182; red = 178; s2 = 172; s4 = 168; dpi = 390;
+            } else if(device.toLowerCase().includes('c3') || device.toLowerCase().includes('c11') || device.toLowerCase().includes('c33') || device.toLowerCase().includes('y11') || device.toLowerCase().includes('a12') || device.toLowerCase().includes('a10')) {
+                gen = 199; red = 197; s2 = 193; s4 = 190; dpi = 450;
+            } else {
+                dpi = 420;
+            }
+
+            document.getElementById('selectedDeviceName').innerText = device;
             document.getElementById('genVal').innerText = gen;
             document.getElementById('redVal').innerText = red;
             document.getElementById('scope2Val').innerText = s2;
@@ -311,9 +459,12 @@
             document.getElementById('resultBox').style.display = 'block';
         }
 
-        function copyText(type) {
-            alert(type + " setting copied successfully!");
+        function copyText(typeName, elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert(typeName + " (" + textToCopy + ") copied successfully!");
+            });
         }
     </script>
 </body>
-    </html>
+</html>
