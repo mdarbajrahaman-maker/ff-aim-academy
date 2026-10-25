@@ -84,7 +84,7 @@
         }
 
         .hero h2 {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--primary);
             margin-bottom: 5px;
         }
@@ -209,38 +209,44 @@
     <div class="container">
         
         <div class="hero">
-            <h2>🔥 INDIA DEVICE SENSITIVITY GENERATOR</h2>
-            <p>Apna mobile brand aur playstyle select karein aur best settings paayein!</p>
+            <h2>🔥 PRO HEADSHOT SENSITIVITY GENERATOR</h2>
+            <p>Apna exact mobile model select karein aur 100% working pro settings paayein!</p>
         </div>
 
         <div class="card">
-            <h3>📱 Select Your Mobile & RAM</h3>
+            <h3>📱 Select Your Mobile Device & RAM</h3>
             
             <div class="form-group">
-                <label>Mobile Brand & Model</label>
+                <label>All Indian Mobile Brands & Models</label>
                 <select id="deviceSelect">
-                    <optgroup label="Realme">
-                        <option value="realme_high">Realme Narzo / GT Series (6GB/8GB)</option>
-                        <option value="realme_mid">Realme C Series / 9 / 10 / 11 (4GB/6GB)</option>
+                    <optgroup label="--- REALME ---">
+                        <option value="realme_c">Realme C Series (C3, C11, C33, C53, C55 - 3GB/4GB)</option>
+                        <option value="realme_mid">Realme 9 / 10 / 11 / 12 Series (4GB/6GB)</option>
+                        <option value="realme_high">Realme Narzo & GT Series (6GB/8GB/12GB)</option>
                     </optgroup>
-                    <optgroup label="Samsung">
-                        <option value="samsung_m">Samsung Galaxy M34 / M54 / F54 (6GB/8GB)</option>
-                        <option value="samsung_a">Samsung Galaxy A14 / A34 / A54</option>
+                    <optgroup label="--- SAMSUNG ---">
+                        <option value="samsung_low">Samsung Galaxy A14 / M13 / F14 (4GB)</option>
+                        <option value="samsung_mid">Samsung Galaxy A34 / M34 / F34 (6GB/8GB)</option>
+                        <option value="samsung_high">Samsung Galaxy A54 / M54 / S Series Ultra</option>
                     </optgroup>
-                    <optgroup label="Redmi / Poco">
-                        <option value="poco_x">Poco X5 / X6 / F5 Pro</option>
-                        <option value="redmi_note">Redmi Note 12 / 13 Pro (6GB/8GB)</option>
-                        <option value="redmi_budget">Redmi 12 / A2 (Low-End 4GB)</option>
+                    <optgroup label="--- REDMI & POCO ---">
+                        <option value="redmi_budget">Redmi 10 / 12 / A2 / A3 (Low-End 3GB/4GB)</option>
+                        <option value="redmi_note">Redmi Note 10 / 11 / 12 / 13 Pro (6GB/8GB)</option>
+                        <option value="poco_series">Poco M4/M6, X5/X6 Pro, F5/F6 (Gaming Series)</option>
                     </optgroup>
-                    <optgroup label="Vivo / Oppo">
-                        <option value="vivo_v">Vivo V29 / V30 / T2 Pro</option>
-                        <option value="oppo_reno">Oppo Reno 10 / 11 Series</option>
+                    <optgroup label="--- VIVO & OPPO ---">
+                        <option value="vivo_y">Vivo Y Series & Oppo A Series (Budget)</option>
+                        <option value="vivo_v">Vivo V29 / V30 / T2 / T3 Pro Series</option>
+                        <option value="oppo_reno">Oppo Reno 8 / 9 / 10 / 11 Series</option>
                     </optgroup>
-                    <optgroup label="OnePlus">
-                        <option value="oneplus_nord">OnePlus Nord CE 3 / 4 / 11R</option>
+                    <optgroup label="--- ONEPLUS ---">
+                        <option value="oneplus_series">OnePlus Nord CE 3/4, 11R, 12R (Smooth 90FPS)</option>
                     </optgroup>
-                    <optgroup label="Apple iPhone">
-                        <option value="iphone">iPhone 11, 12, 13, 14, 15 Series</option>
+                    <optgroup label="--- APPLE iPHONE ---">
+                        <option value="iphone_series">Apple iPhone 11, 12, 13, 14, 15, 16 Series</option>
+                    </optgroup>
+                    <optgroup label="--- OTHERS (Moto, Infinix, Tecno) ---">
+                        <option value="others_budget">Moto G54, Infinix Note, Tecno Pova Series</option>
                     </optgroup>
                 </select>
             </div>
@@ -248,30 +254,31 @@
             <div class="form-group">
                 <label>Player Playstyle</label>
                 <select id="playstyle">
+                    <option value="rush">Close Range Rush / Fast Gloo Wall</option>
                     <option value="drag">One-Tap / Long Range Drag</option>
-                    <option value="rush">Close Range Rush Player</option>
                     <option value="balanced">Balanced All-Rounder</option>
                 </select>
             </div>
 
-            <button class="gen-btn" onclick="generateSensitivity()">Generate Exact Sensitivity</button>
+            <button class="gen-btn" onclick="generateSensitivity()">Generate Pro Sensitivity</button>
 
             <div class="result-box" id="resultBox">
-                <h4 style="color:var(--primary); margin-bottom:10px; font-size:14px;">✨ Best In-Game Settings (Max 200):</h4>
-                <div class="result-item"><span>General:</span> <b><span id="genVal">195</span></b> <button class="copy-single-btn" onclick="copyText('General')">Copy</button></div>
-                <div class="result-item"><span>Red Dot:</span> <b><span id="redVal">190</span></b> <button class="copy-single-btn" onclick="copyText('Red Dot')">Copy</button></div>
-                <div class="result-item"><span>2x Scope:</span> <b><span id="scope2Val">185</span></b> <button class="copy-single-btn" onclick="copyText('2x Scope')">Copy</button></div>
-                <div class="result-item"><span>4x Scope:</span> <b><span id="scope4Val">180</span></b> <button class="copy-single-btn" onclick="copyText('4x Scope')">Copy</button></div>
-                <div class="result-item"><span>AWA Scope:</span> <b><span id="awaVal">75</span></b> <button class="copy-single-btn" onclick="copyText('AWA Scope')">Copy</button></div>
+                <h4 style="color:var(--primary); margin-bottom:10px; font-size:14px;">✨ Pro In-Game Settings (Max 200):</h4>
+                <div class="result-item"><span>General:</span> <b><span id="genVal">196</span></b> <button class="copy-single-btn" onclick="copyText('General')">Copy</button></div>
+                <div class="result-item"><span>Red Dot:</span> <b><span id="redVal">192</span></b> <button class="copy-single-btn" onclick="copyText('Red Dot')">Copy</button></div>
+                <div class="result-item"><span>2x Scope:</span> <b><span id="scope2Val">188</span></b> <button class="copy-single-btn" onclick="copyText('2x Scope')">Copy</button></div>
+                <div class="result-item"><span>4x Scope:</span> <b><span id="scope4Val">185</span></b> <button class="copy-single-btn" onclick="copyText('4x Scope')">Copy</button></div>
+                <div class="result-item"><span>Sniper Scope:</span> <b><span id="awaVal">72</span></b> <button class="copy-single-btn" onclick="copyText('Sniper Scope')">Copy</button></div>
                 <div class="result-item"><span>Free Look:</span> <b><span id="freeVal">80</span></b> <button class="copy-single-btn" onclick="copyText('Free Look')">Copy</button></div>
-                <div class="result-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top:5px; padding-top:8px;"><span>Recommended DPI:</span> <b style="color:var(--accent);"><span id="dpiVal">550</span></b> <button class="copy-single-btn" onclick="copyText('DPI')">Copy</button></div>
+                <div class="result-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top:5px; padding-top:8px;"><span>Recommended DPI:</span> <b style="color:var(--accent);"><span id="dpiVal">580</span></b> <button class="copy-single-btn" onclick="copyText('DPI')">Copy</button></div>
             </div>
         </div>
 
         <div class="card">
-            <h3>🎯 Custom HUD Claw Layout</h3>
-            <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">Fire Button Size: <b>45% to 48%</b></p>
-            <p style="font-size:12px; color:var(--text-muted);">Fire Button Position: <b>Bottom Right Corner (Fast Rotation ke liye)</b></p>
+            <h3>🎯 Custom HUD Claw & Gloo Wall Layout</h3>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:6px;">Fire Button Size: <b>45% to 48% (Fast Drag ke liye)</b></p>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:6px;">Fire Button Position: <b>Bottom Right Corner</b></p>
+            <p style="font-size:12px; color:var(--accent);">⚡ Pro Tip: Fast Gloo Wall ke liye Sit-Up Gloo Wall button fire button ke theek upar rakhein.</p>
         </div>
 
     </div>
@@ -283,14 +290,14 @@
     <script>
         function generateSensitivity() {
             const device = document.getElementById('deviceSelect').value;
-            let gen = 190, red = 185, s2 = 180, s4 = 175, awa = 70, free = 75, dpi = 550;
+            let gen = 195, red = 190, s2 = 185, s4 = 180, awa = 70, free = 75, dpi = 560;
 
-            if(device.includes('redmi_budget') || device.includes('samsung_m')) {
-                gen = 198; red = 195; s2 = 190; s4 = 185; dpi = 600;
+            if(device.includes('c') || device.includes('budget') || device.includes('low')) {
+                gen = 199; red = 196; s2 = 192; s4 = 188; dpi = 620;
             } else if(device.includes('iphone')) {
-                gen = 180; red = 175; s2 = 170; s4 = 165; dpi = 410;
-            } else if(device.includes('realme_high') || device.includes('poco_x')) {
-                gen = 192; red = 188; s2 = 182; s4 = 178; dpi = 540;
+                gen = 182; red = 178; s2 = 172; s4 = 168; dpi = 410;
+            } else if(device.includes('high') || device.includes('poco') || device.includes('oneplus')) {
+                gen = 194; red = 190; s2 = 184; s4 = 180; dpi = 550;
             }
 
             document.getElementById('genVal').innerText = gen;
@@ -309,4 +316,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
